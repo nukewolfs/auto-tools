@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoTools - 办公自动化工具箱</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .container { background: white; border-radius: 20px; padding: 40px; max-width: 600px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        h1 { color: #333; margin-bottom: 10px; text-align: center; }
+        .subtitle { color: #666; text-align: center; margin-bottom: 30px; }
+        .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 30px 0; }
+        .tool { background: #f8f9fa; padding: 20px; border-radius: 10px; text-align: center; transition: transform 0.2s; }
+        .tool:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .tool-icon { font-size: 30px; margin-bottom: 10px; }
+        .tool-name { color: #333; font-weight: bold; }
+        .download-btn { display: block; width: 100%; padding: 15px; background: #667eea; color: white; text-align: center; text-decoration: none; border-radius: 10px; font-size: 18px; font-weight: bold; transition: background 0.2s; }
+        .download-btn:hover { background: #5568d3; }
+        .stats { display: flex; justify-content: center; gap: 30px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; }
+        .stat { text-align: center; }
+        .stat-num { font-size: 24px; font-weight: bold; color: #667eea; }
+        .stat-label { color: #666; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛠️ AutoTools</h1>
+        <p class="subtitle">办公自动化工具箱 - 批量处理文件/Excel神器</p>
+        
+        <div class="tools">
+            <div class="tool">
+                <div class="tool-icon">📁</div>
+                <div class="tool-name">批量重命名</div>
+            </div>
+            <div class="tool">
+                <div class="tool-icon">📂</div>
+                <div class="tool-name">自动分类</div>
+            </div>
+            <div class="tool">
+                <div class="tool-icon">📊</div>
+                <div class="tool-name">Excel合并</div>
+            </div>
+            <div class="tool">
+                <div class="tool-icon">🔄</div>
+                <div class="tool-name">数据清洗</div>
+            </div>
+        </div>
+        
+        <a href="https://github.com/nukewolfs/auto-tools/archive/refs/heads/main.zip" class="download-btn">
+            ⬇️ 免费下载源码
+        </a>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-num">0</div>
+                <div class="stat-label">下载次数</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">⭐</div>
+                <div class="stat-label">GitHub</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">v1.0</div>
+                <div class="stat-label">版本</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+Metadata-Version: 2.4
+Name: autotools-nukewolfs
+Version: 1.0.0
+Summary: 办公自动化工具箱 - 批量处理文件Excel
+Home-page: https://github.com/nukewolfs/auto-tools
+Author: nukewolfs
+Author-email: nukewolf@qq.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.7
+Requires-Dist: pandas>=1.0.0
+Requires-Dist: openpyxl>=3.0.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary

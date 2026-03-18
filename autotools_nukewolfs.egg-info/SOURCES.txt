@@ -1,0 +1,8 @@
+README.md
+setup.py
+autotools_nukewolfs.egg-info/PKG-INFO
+autotools_nukewolfs.egg-info/SOURCES.txt
+autotools_nukewolfs.egg-info/dependency_links.txt
+autotools_nukewolfs.egg-info/entry_points.txt
+autotools_nukewolfs.egg-info/requires.txt
+autotools_nukewolfs.egg-info/top_level.txt
