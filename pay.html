@@ -25,8 +25,8 @@
         .payment-modal.active { display: flex; }
         .payment-box { background: white; padding: 30px; border-radius: 20px; text-align: center; max-width: 350px; }
         .payment-box h2 { margin-bottom: 20px; }
-        .qr-code { width: 200px; height: 200px; background: #eee; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
-        .qr-code img { max-width: 100%; }
+        .qr-code { width: 220px; height: 300px; margin: 0 auto 20px; border-radius: 10px; overflow: hidden; }
+        .qr-code img { width: 100%; height: 100%; object-fit: cover; }
         .alipay-note { color: #666; font-size: 14px; margin-bottom: 15px; }
         .close-btn { background: #999; }
         
@@ -51,7 +51,7 @@
             </div>
             <div class="tool-price">
                 <span class="price">¥9.9</span>
-                <button class="btn" onclick="showPayment('rename')">立即购买</button>
+                <button class="btn" onclick="showPayment('9.9')">立即购买</button>
             </div>
         </div>
         
@@ -65,7 +65,7 @@
             </div>
             <div class="tool-price">
                 <span class="price">¥19.9</span>
-                <button class="btn" onclick="showPayment('excel')">立即购买</button>
+                <button class="btn" onclick="showPayment('19.9')">立即购买</button>
             </div>
         </div>
         
@@ -79,7 +79,7 @@
             </div>
             <div class="tool-price">
                 <span class="price">¥14.9</span>
-                <button class="btn" onclick="showPayment('classify')">立即购买</button>
+                <button class="btn" onclick="showPayment('14.9')">立即购买</button>
             </div>
         </div>
         
@@ -93,12 +93,12 @@
             </div>
             <div class="tool-price">
                 <span class="price" style="color: white;">¥39.9</span>
-                <button class="btn" style="background: white; color: #f5576c;" onclick="showPayment('all')">立即购买</button>
+                <button class="btn" style="background: white; color: #f5576c;" onclick="showPayment('39.9')">立即购买</button>
             </div>
         </div>
         
         <div class="stats">
-            <div class="stat"><div class="stat-num">0</div><div class="stat-label">已售出</div></div>
+            <div class="stat"><div class="stat-num" id="salesCount">0</div><div class="stat-label">已售出</div></div>
             <div class="stat"><div class="stat-num">⭐</div><div class="stat-label">GitHub</div></div>
             <div class="stat"><div class="stat-num">v1.0</div><div class="stat-label">版本</div></div>
         </div>
@@ -108,22 +108,17 @@
         <div class="payment-box">
             <h2>📱 扫码付款</h2>
             <div class="qr-code">
-                <!-- 这里放支付宝收款码图片 -->
-                <div style="color: #666;">
-                    <p style="font-size: 40px;">💰</p>
-                    <p>¥<span id="payAmount">9.9</span></p>
-                </div>
+                <img src="https://lightai.cloud.tencent.com/cosmanager/getFileStream?filePath=1773814424511/4B1EB8C5469CF8C7E0FF00E031BDBF1A_1773814406441.jpg" alt="支付宝收款码">
             </div>
-            <p class="alipay-note">支付宝付款至: 13847229210</p>
-            <p style="color: #999; font-size: 12px; margin-bottom: 15px;">付款后联系微信: nukewolf</p>
+            <p class="alipay-note">付款 <strong style="color:#e74c3c;font-size:18px;">¥<span id="payAmount">9.9</span></strong> 至上面收款码</p>
+            <p style="color: #999; font-size: 12px; margin-bottom: 15px;">付款后截图发微信: nukewolf001</p>
             <button class="btn close-btn" onclick="closePayment()">关闭</button>
         </div>
     </div>
     
     <script>
-        const prices = { rename: '9.9', excel: '19.9', classify: '14.9', all: '39.9' };
-        function showPayment(type) {
-            document.getElementById('payAmount').innerText = prices[type];
+        function showPayment(amount) {
+            document.getElementById('payAmount').innerText = amount;
             document.getElementById('paymentModal').classList.add('active');
         }
         function closePayment() {
