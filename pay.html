@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoTools - 办公自动化工具箱</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: white; border-radius: 20px; padding: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        h1 { text-align: center; color: #333; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 25px; }
+        
+        .tool-card { background: #f8f9fa; border-radius: 15px; padding: 20px; margin-bottom: 15px; }
+        .tool-header { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
+        .tool-icon { font-size: 36px; }
+        .tool-info h3 { color: #333; margin-bottom: 3px; }
+        .tool-info p { color: #666; font-size: 14px; }
+        .tool-price { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; }
+        .price { font-size: 24px; font-weight: bold; color: #e74c3c; }
+        .btn { background: #667eea; color: white; border: none; padding: 12px 30px; border-radius: 25px; font-size: 16px; cursor: pointer; }
+        .btn:hover { background: #5568d3; }
+        
+        .payment-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; z-index: 1000; }
+        .payment-modal.active { display: flex; }
+        .payment-box { background: white; padding: 30px; border-radius: 20px; text-align: center; max-width: 350px; }
+        .payment-box h2 { margin-bottom: 20px; }
+        .qr-code { width: 200px; height: 200px; background: #eee; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
+        .qr-code img { max-width: 100%; }
+        .alipay-note { color: #666; font-size: 14px; margin-bottom: 15px; }
+        .close-btn { background: #999; }
+        
+        .stats { display: flex; justify-content: center; gap: 40px; padding: 20px 0; border-top: 1px solid #eee; margin-top: 20px; }
+        .stat { text-align: center; }
+        .stat-num { font-size: 20px; font-weight: bold; color: #667eea; }
+        .stat-label { font-size: 12px; color: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛠️ AutoTools</h1>
+        <p class="subtitle">办公自动化工具箱 - 批量处理神器</p>
+        
+        <div class="tool-card">
+            <div class="tool-header">
+                <div class="tool-icon">📁</div>
+                <div class="tool-info">
+                    <h3>批量重命名工具</h3>
+                    <p>按序号/日期批量重命名文件</p>
+                </div>
+            </div>
+            <div class="tool-price">
+                <span class="price">¥9.9</span>
+                <button class="btn" onclick="showPayment('rename')">立即购买</button>
+            </div>
+        </div>
+        
+        <div class="tool-card">
+            <div class="tool-header">
+                <div class="tool-icon">📊</div>
+                <div class="tool-info">
+                    <h3>Excel批量处理</h3>
+                    <p>合并/拆分/去重/清洗</p>
+                </div>
+            </div>
+            <div class="tool-price">
+                <span class="price">¥19.9</span>
+                <button class="btn" onclick="showPayment('excel')">立即购买</button>
+            </div>
+        </div>
+        
+        <div class="tool-card">
+            <div class="tool-header">
+                <div class="tool-icon">📂</div>
+                <div class="tool-info">
+                    <h3>文件自动分类</h3>
+                    <p>按类型/日期自动整理</p>
+                </div>
+            </div>
+            <div class="tool-price">
+                <span class="price">¥14.9</span>
+                <button class="btn" onclick="showPayment('classify')">立即购买</button>
+            </div>
+        </div>
+        
+        <div class="tool-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <div class="tool-header">
+                <div class="tool-icon">🎁</div>
+                <div class="tool-info">
+                    <h3 style="color: white;">全套工具合集</h3>
+                    <p style="color: rgba(255,255,255,0.8);">所有工具 + 终身更新</p>
+                </div>
+            </div>
+            <div class="tool-price">
+                <span class="price" style="color: white;">¥39.9</span>
+                <button class="btn" style="background: white; color: #f5576c;" onclick="showPayment('all')">立即购买</button>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat"><div class="stat-num">0</div><div class="stat-label">已售出</div></div>
+            <div class="stat"><div class="stat-num">⭐</div><div class="stat-label">GitHub</div></div>
+            <div class="stat"><div class="stat-num">v1.0</div><div class="stat-label">版本</div></div>
+        </div>
+    </div>
+    
+    <div class="payment-modal" id="paymentModal">
+        <div class="payment-box">
+            <h2>📱 扫码付款</h2>
+            <div class="qr-code">
+                <!-- 这里放支付宝收款码图片 -->
+                <div style="color: #666;">
+                    <p style="font-size: 40px;">💰</p>
+                    <p>¥<span id="payAmount">9.9</span></p>
+                </div>
+            </div>
+            <p class="alipay-note">支付宝付款至: 13847229210</p>
+            <p style="color: #999; font-size: 12px; margin-bottom: 15px;">付款后联系微信: nukewolf</p>
+            <button class="btn close-btn" onclick="closePayment()">关闭</button>
+        </div>
+    </div>
+    
+    <script>
+        const prices = { rename: '9.9', excel: '19.9', classify: '14.9', all: '39.9' };
+        function showPayment(type) {
+            document.getElementById('payAmount').innerText = prices[type];
+            document.getElementById('paymentModal').classList.add('active');
+        }
+        function closePayment() {
+            document.getElementById('paymentModal').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
